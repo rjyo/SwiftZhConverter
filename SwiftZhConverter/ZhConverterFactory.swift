@@ -17,8 +17,6 @@ public class ZhConverterFactory {
             return TraditionalZhConverter()
         case .SIMPLIFIED :
             return SimplifiedZhConverter()
-        default:
-            return TraditionalZhConverter()
         }
         
     }

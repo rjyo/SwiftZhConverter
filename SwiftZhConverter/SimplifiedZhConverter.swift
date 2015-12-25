@@ -11,22 +11,21 @@ public class SimplifiedZhConverter : ZhConverter {
     }
     
     public func convert(rawText: String) -> String {
-        var location = NSBundle(identifier: "SwiftZhConverter")?.resourcePath!.stringByAppendingString("/word_t2s.txt")
+        let location = NSBundle(identifier: "SwiftZhConverter")?.resourcePath!.stringByAppendingString("/word_t2s.txt")
         
         var mappingTable = Dictionary<Character, Character>();
-        if let var reader = StreamReader(path: location!) {
+        if let reader = StreamReader(path: location!) {
             while let line = reader.nextLine() {
-                var tokens = split(line) {$0 == ","}
-                var token1 = tokens[0]
-                var token2 = tokens[1]
+                var tokens = line.characters.split {$0 == ","}.map { String($0) }
+                let token1 = tokens[0]
+                let token2 = tokens[1]
                 mappingTable[token1[0]] = token2[0]
             }
         }
         
         var newText = "";
-        for char in rawText {
+        for char in rawText.characters {
             if let tc = mappingTable[char] {
-                var buf = mappingTable[char]
                 newText.append(tc);
             } else {
                 newText.append(char)

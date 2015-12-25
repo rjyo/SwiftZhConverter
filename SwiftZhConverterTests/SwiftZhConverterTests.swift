@@ -10,10 +10,10 @@ import SwiftZhConverter;
 class SwiftZhConverterTests: XCTestCase {
     func testTranditionalConvertToSimplified() {
         //// Arrange
-        var converter = ZhConverterFactory.getConverter(ZhCode.SIMPLIFIED)
+        let converter = ZhConverterFactory.getConverter(ZhCode.SIMPLIFIED)
         
         //// Act
-        var result = converter.convert("書館員是很清閒的工作嗎？")
+        let result = converter.convert("書館員是很清閒的工作嗎？")
         
         // This is an example of a functional test case.
         XCTAssertEqual("书馆员是很清闲的工作吗？", result, "Pass")
@@ -21,10 +21,10 @@ class SwiftZhConverterTests: XCTestCase {
     
     func testSimplifiedConvertToTranditional() {
         //// Arrange
-        var converter = ZhConverterFactory.getConverter(ZhCode.TRANDITIONAL)
+        let converter = ZhConverterFactory.getConverter(ZhCode.TRANDITIONAL)
         
         //// Act
-        var result = converter.convert("书馆员是很清闲的工作吗？")
+        let result = converter.convert("书馆员是很清闲的工作吗？")
         
         // This is an example of a functional test case.
         XCTAssertEqual("書館員是很清閒的工作嗎？", result, "Pass")
